@@ -1,11 +1,570 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Chatbot autos del futuro</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Autos Ejecutivos de Guatemala</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3c5da0;
+            --primary-dark: #2a4172;
+            --primary-light: #5b7cc4;
+            --secondary-color: #f8f9fa;
+            --accent-color: #e63946;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--secondary-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 25px;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 150px 0 100px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #c1121f;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: var(--secondary-color);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: var(--secondary-color);
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .about-content h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .about-content p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+        
+        .about-image {
+            background-color: var(--primary-light);
+            height: 300px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-right: 15px;
+            min-width: 30px;
+            text-align: center;
+        }
+        
+        .contact-details h3 {
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+        }
+        
+        .contact-details p {
+            color: var(--text-light);
+        }
+        
+        .map-container {
+            height: 300px;
+            background-color: #eee;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-about p {
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .footer-links h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-menu {
+                margin-top: 20px;
+                flex-direction: column;
+            }
+            
+            .nav-menu li {
+                margin: 10px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                display: block;
+                margin: 10px auto;
+                width: 80%;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Chatbot autos del futuro</h1>
-    <p>Automatización de documentos en Google Drive using n8n</p>
-    <p><a href="[LINK_A_POLITICA_PRIVACIDAD]">Política de Privacidad</a></p>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">VE</div>
+                <div class="logo-text">Vehículos Ejecutivos</div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#features">Características</a></li>
+                <li><a href="#about">Nosotros</a></li>
+                <li><a href="#contact">Contacto</a></li>
+                <li><a href="privacy-policy.html">Políticas</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Chatbot Autos Ejecutivos de Guatemala</h1>
+            <p>Automatización inteligente para procesos de leasing vehicular con integración Google Workspace</p>
+            <a href="#contact" class="btn">Solicitar Demo</a>
+            <a href="#features" class="btn btn-outline">Conocer Más</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Soluciones Automatizadas</h2>
+                <p>Nuestro chatbot está diseñado específicamente para optimizar los procesos de leasing de vehículos ejecutivos</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-file-contract"></i></div>
+                    <h3>Gestión de Contratos</h3>
+                    <p>Automatización completa de contratos de leasing con plantillas inteligentes y flujos de trabajo personalizados.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-robot"></i></div>
+                    <h3>Asistente Inteligente</h3>
+                    <p>Chatbot con capacidad de respuesta inmediata a consultas sobre procesos, requisitos y estado de documentos.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-database"></i></div>
+                    <h3>Integración Google Drive</h3>
+                    <p>Conexión segura con Google Workspace para gestión documental y almacenamiento en la nube.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2>Vehículos Ejecutivos de Guatemala</h2>
+                    <p>Somos una empresa especializada en leasing de vehículos ejecutivos, comprometida con brindar soluciones de movilidad empresarial de la más alta calidad.</p>
+                    <p>Nuestro nuevo chatbot interno representa la innovación en procesos automatizados, diseñado para agilizar la gestión de contratos y documentación a través de integración con Google Drive.</p>
+                    <p>Con presencia en la ciudad de Guatemala, nos caracterizamos por el servicio personalizado y soluciones tecnológicas de vanguardia para nuestros clientes.</p>
+                </div>
+                <div class="about-image">
+                    Imagen de Flotilla Ejecutiva
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contacto</h2>
+                <p>Estamos a su disposición para cualquier consulta o solicitud de información</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-details">
+                            <h3>Correo Electrónico</h3>
+                            <p>luiseruiz.94@gmail.com</p>
+                            <p>soporte@vehiculosejecutivosgt.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                        <div class="contact-details">
+                            <h3>Teléfono</h3>
+                            <p>+502 55142038</p>
+                            <p>+502 2200-0000 (Oficina)</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="contact-details">
+                            <h3>Dirección</h3>
+                            <p>31 avenida 11-66 tikal 1</p>
+                            <p>zona 7 carril auxiliar del periférico norte</p>
+                            <p>Guatemala City, Guatemala</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-clock"></i></div>
+                        <div class="contact-details">
+                            <h3>Horario de Atención</h3>
+                            <p>Lunes a Viernes: 8:00 AM - 6:00 PM</p>
+                            <p>Sábados: 9:00 AM - 1:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <i class="fas fa-map-marked-alt" style="font-size: 2rem; margin-right: 10px;"></i>
+                    Mapa de Ubicación
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">Vehículos Ejecutivos</div>
+                    <p>Soluciones de leasing vehicular para empresas con tecnología de vanguardia y servicio personalizado.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="#features">Características</a></li>
+                        <li><a href="#about">Nosotros</a></li>
+                        <li><a href="#contact">Contacto</a></li>
+                        <li><a href="https://www.termsfeed.com/live/39d5641a-58c0-4ed6-aa2a-85a9af644887">Política de Privacidad</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Servicios</h3>
+                    <ul>
+                        <li><a href="#">Leasing Ejecutivo</a></li>
+                        <li><a href="#">Flotillas Empresariales</a></li>
+                        <li><a href="#">Mantenimiento Integral</a></li>
+                        <li><a href="#">Asistencia en Carretera</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Vehículos Ejecutivos de Guatemala. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
