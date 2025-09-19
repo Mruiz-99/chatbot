@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Políticas de Privacidad - Autos del Futuro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #162B4E;
+            --primary-light: #1e3a63;
+            --accent-electric: #00d4ff;
+            --accent-purple: #8b5cf6;
+            --white: #ffffff;
+            --light-gray: #f8fafc;
+            --text-dark: #1a202c;
+            --text-light: #64748b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #ffffff;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(22, 43, 78, 0.1);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-image {
+            height: 70px;
+            width: auto;
+            object-fit: contain;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-electric));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 500;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--accent-electric);
+        }
+        
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(90deg, var(--accent-electric), var(--accent-purple));
+            transition: width 0.3s ease;
+        }
+        
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+        
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 100px auto 50px;
+            padding: 0 2rem;
+        }
+        
+        .privacy-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .privacy-header h1 {
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .privacy-header p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .last-updated {
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .privacy-content {
+            background: var(--light-gray);
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 5px 20px rgba(22, 43, 78, 0.1);
+        }
+        
+        .privacy-section {
+            margin-bottom: 3rem;
+        }
+        
+        .privacy-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .privacy-section h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-electric);
+        }
+        
+        .privacy-section h3 {
+            font-size: 1.4rem;
+            color: var(--primary-light);
+            margin: 1.5rem 0 1rem;
+        }
+        
+        .privacy-section p {
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+        
+        .privacy-section ul {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+        
+        .privacy-section li {
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, rgba(0, 212, 255, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            border-left: 4px solid var(--accent-electric);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        
+        .contact-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(22, 43, 78, 0.08);
+            margin-top: 2rem;
+        }
+        
+        .contact-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 3rem 0 2rem;
+            margin-top: 4rem;
+            position: relative;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+        }
+        
+        .footer-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--accent-electric);
+        }
+        
+        .footer-section p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: var(--accent-electric);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background: linear-gradient(135deg, var(--accent-electric), var(--accent-purple));
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .main-content {
+                margin-top: 120px;
+                padding: 0 1rem;
+            }
+            
+            .privacy-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .privacy-content {
+                padding: 1.5rem;
+            }
+            
+            .privacy-section h2 {
+                font-size: 1.5rem;
+            }
+            
+            .privacy-section h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-text">AUTOS DEL FUTURO</div>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="index.html#servicios">Servicios</a></li>
+                    <li><a href="index.html#nosotros">Nosotros</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                    <li><a href="#politicas">Políticas</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="privacy-header">
+            <h1>Política de privacidad</h1>
+            <p>En Autos del Futuro, valoramos y respetamos tu privacidad. Esta política explica cómo recopilamos, usamos y protegemos tu información.</p>
+        </div>
+        
+        <p class="last-updated">Última actualización: 25 de Agosto, 2025</p>
+        
+        <div class="privacy-content">
+            <div class="privacy-section">
+                <h2>1. Introducción</h2>
+                <p>Autos del futuro se compromete a proteger la privacidad de sus usuarios ("usted" o "usuario"). Esta Política de privacidad describe cómo recopilamos, utilizamos, divulgamos y protegemos su información personal cuando utiliza nuestros servicios, incluido nuestro sitio web y cualquier aplicación relacionada.</p>
+                
+                <p>Al utilizar nuestros servicios, usted acepta las prácticas descritas en esta Política de privacidad. Si no está de acuerdo con estas prácticas, por favor no utilice nuestros servicios.</p>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>2. Información que recopilamos</h2>
+                <p>Recopilamos varios tipos de información para proporcionar y mejorar nuestros servicios:</p>
+                
+                <h3>2.1. Información proporcionada directamente por usted</h3>
+                <ul>
+                    <li>Información de contacto (nombre, dirección de correo electrónico, número de teléfono)</li>
+                    <li>Información demográfica (edad, género, ubicación)</li>
+                    <li>Información de pago (información bancaria)</li>
+                    <li>Preferencias de comunicación</li>
+                    <li>Información que nos proporciona al contactar con nuestro servicio de atención al cliente</li>
+                </ul>
+            
+            </div>
+            
+            <div class="privacy-section">
+                <h2>3. Cómo utilizamos su información</h2>
+                <p>Utilizamos la información recopilada para los siguientes propósitos:</p>
+                
+                <ul>
+                    <li>Proporcionar, operar y mantener nuestros servicios</li>
+                    <li>Crear y gestionar su cuenta</li>
+                    <li>Comunicarnos con usted sobre servicios, actualizaciones y ofertas promocionales</li>
+                    <li>Personalizar y mejorar su experiencia con nuestros servicios</li>
+                    <li>Desarrollar nuevos productos, servicios y funcionalidades</li>
+                    <li>Analizar tendencias y métricas de uso</li>
+                    <li>Prevenir fraudes y mejorar la seguridad</li>
+                    <li>Cumplir con obligaciones legales y regulatorias</li>
+                </ul>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>4. Compartición de información</h2>
+                <p>No vendemos, comercializamos ni alquilamos su información personal a terceros. Podemos compartir su información en las siguientes circunstancias:</p>
+                
+                <h3>4.1. Proveedores de servicios</h3>
+                <p>Compartimos información con proveedores de servicios de confianza que nos ayudan a operar nuestro negocio, como:</p>
+                <ul>
+                    <li>Servicios de alojamiento web</li>
+                    <li>Servicios de análisis y marketing</li>
+                    <li>Proveedores de servicios de atención al cliente</li>
+                </ul>
+                <p>Estos proveedores tienen acceso a la información necesaria para realizar sus funciones, pero no pueden utilizarla para otros fines.</p>
+                
+                <h3>4.2. Requisitos legales</h3>
+                <p>Podemos divulgar su información si así lo requiere la ley o en respuesta a solicitudes válidas de autoridades públicas.</p>
+                
+                <div class="highlight">
+                    <p><strong>No compartimos datos de usuario de Google con terceros</strong> para fines distintos a proporcionar o mejorar la funcionalidad de nuestra aplicación, como publicidad dirigida, venta a corredores de datos, determinación de solvencia crediticia, fines de préstamo, anuncios de usuario, anuncios personalizados, anuncios reorientados o anuncios basados en intereses.</p>
+                </div>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>5. Protección de datos</h2>
+                <p>Implementamos medidas de seguridad técnicas y organizativas apropiadas para proteger su información personal:</p>
+                
+                <ul>
+                    <li>Utilizamos encriptación para proteger sus datos durante la transmisión y el almacenamiento</li>
+                    <li>Mantenemos procedimientos de seguridad para proteger la confidencialidad de sus datos</li>
+                    <li>Limitamos el acceso a su información personal a empleados que necesitan conocer esa información</li>
+                    <li>Realizamos evaluaciones regulares de seguridad para identificar y abordar posibles vulnerabilidades</li>
+                </ul>
+                
+            </div>
+            
+            <div class="privacy-section">
+                <h2>6. Retención y eliminación de datos</h2>
+                <p>Conservamos su información personal durante el tiempo necesario para cumplir con los fines descritos en esta política, a menos que la ley exija o permita un período de retención más largo.</p>
+                
+                <p>Almacenamos su información personal durante un período coherente con nuestros fines comerciales y legales. Cuando expire el período de retención de datos para un determinado tipo de datos, los eliminaremos o destruiremos de forma segura.</p>
+                
+            </div>
+            
+            <div class="privacy-section">
+                <h2>7. Sus derechos</h2>
+                <p>Usted tiene derechos respecto a su información personal, que incluyen:</p>
+                
+                <ul>
+                    <li><strong>Acceso:</strong> derecho a acceder a la información personal que tenemos sobre usted</li>
+                    <li><strong>Rectificación:</strong> derecho a corregir información inexacta o incompleta</li>
+                    <li><strong>Eliminación:</strong> derecho a solicitar la eliminación de su información personal</li>
+                    <li><strong>Limitación del procesamiento:</strong> derecho a limitar cómo utilizamos su información</li>
+                    <li><strong>Portabilidad de datos:</strong> derecho a recibir su información en un formato estructurado</li>
+                    <li><strong>Oposición:</strong> derecho a oponerse al procesamiento de su información</li>
+                    <li><strong>Retirar el consentimiento:</strong> derecho a retirar su consentimiento cuando el procesamiento se base en consentimiento</li>
+                </ul>
+                
+                <p>Para ejercer cualquiera de estos derechos, póngase en contacto con nosotros utilizando la información de contacto proporcionada al final de esta política.</p>
+            </div>
+            
+            
+            <div class="privacy-section">
+                <h2>8. Cambios en esta política</h2>
+                <p>Podemos actualizar esta política de privacidad periódicamente para reflejar cambios en nuestras prácticas de información. Le notificaremos sobre cualquier cambio material publicando la nueva política de privacidad en esta página y actualizando la fecha de "Última actualización" en la parte superior.</p>
+                
+                <p>Le recomendamos que revise esta política de privacidad periódicamente para estar informado sobre cómo protegemos su información. Los cambios en esta política son efectivos cuando se publican en esta página.</p>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>9. Contacto</h2>
+                <p>Si tiene preguntas, inquietudes o comentarios sobre esta política de privacidad o nuestras prácticas de información, contáctenos a través de:</p>
+                
+                <div class="contact-info">
+                    <h3>Autos del futuro</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 31 avenida 11-66 tikal 1, zona 7, Carril auxiliar del periférico norte, Guatemala City, Guatemala</p>
+                    <p><i class="fas fa-phone"></i> +502 5514 2038</p>
+                    <p><i class="fas fa-globe"></i> www.autosdelfuturo.com</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
